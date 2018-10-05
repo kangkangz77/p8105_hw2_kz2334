@@ -131,11 +131,20 @@ prcp_data
 
 *   The number of observations is `r dim(trash_data)[1]`. 
 *   The mean weight of  dumpsters is `r round(mean(trash_data$weight), 2)` tons. 
-*   Maximum and minimum weight of dumpsters is `r round(max(trash_data$weight), 2)` tons and `r round(min(trash_data$weight),2)` tons respectively.
+*   Maximum weight of dumpsters is `r round(max(trash_data$weight), 2)` tons.
+*   Minimum weight of dumpsters is `r round(min(trash_data$weight), 2)` tons.
 *   The mean homes powered of dumpsters is `r round(mean(trash_data$homes_powered))`.
 
 **2016 and 2017 precipitation dataset**:
 
 *   The number of observations is `r dim(prcp_data)[1]`. 
 *   The average monthly precipitation in 2016 and 2017 is `r round(mean(prcp_data$total), 2)` in. 
-*   Maximum and minimum monthly precipitation in 2016 and 2017 is `r round(max(prcp_data$total), 2)` tons and `r round(min(prcp_data$total),2)` tons respectively.
+*   Maximum monthly precipitation in 2016 and 2017 is `r round(max(prcp_data$total), 2)` tons.
+*   Minimum monthly precipitation in 2016 and 2017 is `r round(min(prcp_data$total), 2)` tons.
+
+The total precipitation in 2017 was `r round(mean(prcp_2017_data$Total), 2)`.
+```{r 2.4, echo = FALSE}
+trash_data_2016 = filter(trash_data, year == 2016) 
+```
+
+The median number of sports balls in a dumpster in 2016 was `r  median(trash_data_2016$sports_balls)`.
