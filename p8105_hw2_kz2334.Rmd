@@ -127,3 +127,15 @@ prcp_data = rbind(prcp_2016_data, prcp_2017_data) %>%
 prcp_data
 ```
 
+**Mr. Trash Wheel dataset**:
+
+*   The number of observations is `r dim(trash_data)[1]`. 
+*   The mean weight of  dumpsters is `r round(mean(trash_data$weight), 2)` tons. 
+*   Maximum and minimum weight of dumpsters is `r round(max(trash_data$weight), 2)` tons and `r round(min(trash_data$weight),2)` tons respectively.
+*   The mean homes powered of dumpsters is `r round(mean(trash_data$homes_powered))`.
+
+**2016 and 2017 precipitation dataset**:
+
+*   The number of observations is `r dim(prcp_data)[1]`. 
+*   The average monthly precipitation in 2016 and 2017 is `r round(mean(prcp_data$total), 2)` in. 
+*   Maximum and minimum monthly precipitation in 2016 and 2017 is `r round(max(prcp_data$total), 2)` tons and `r round(min(prcp_data$total),2)` tons respectively.
