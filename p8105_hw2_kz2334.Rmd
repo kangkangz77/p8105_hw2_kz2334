@@ -196,4 +196,13 @@ brfss_data %>%
   arrange(desc(n))
 ```
 
-Every state is represented. NJ state is observed the most.
+There are 51 distinct states. Every state is represented. NJ state is observed the most.
+
+-----------------------
+
+Find out the median of the “Excellent” response value in 2002.
+```{r 3.6}
+brfss_2002_data = filter(brfss_data, year == 2002)
+```
+
+The median of the “Excellent” response value is `r median(brfss_2002_data$excellent, na.rm = TRUE)` in 2002.
