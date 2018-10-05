@@ -31,7 +31,7 @@ Here is the data cleaning step:
 
 The dimension of the dataset is (`r dim(transit_data)`).
 
-The data are not tidy. Because some variables, such like the factor that whether a station served for A line, have values appear in different columns. 
+The data are not tidy. Because some variables, such like the factor that whether a station served for A line, have values appear in different columns among route1 - route11. 
 
 ----------------------------
 
@@ -47,7 +47,7 @@ Use filter and distinct to find out number of stations which are ADA compliant.
 ```{r 1.4}
 transit_data %>% 
   filter(ada == TRUE) %>% 
-  distinct(line, station_name)
+  distinct(line, station_name, ada)
 ```
 82 stations are ADA compliant.
 
@@ -59,3 +59,35 @@ entry_data = filter(transit_data, vending == "NO" & entry == TRUE)
 dim(entry_data)[1] / dim(transit_data)[1]
 ```
 There are 3.69% station entrances / exits without vending allow entrance.
+
+----------------------------
+
+Reformat the dataset with distinct route name and route number.
+```{r 1.6}
+route_data = gather(transit_data, key = route_number, value = route_name, route1:route11) %>% 
+  filter(is.na(route_name) == FALSE)
+```
+
+----------------------------
+
+Find out the number of distinct stations serve the A train and the number of ADA compliant of them.
+```{r 1.7}
+route_data %>% 
+  filter(route_name == "A") %>% 
+  distinct(line, station_name, route_name)
+```
+60 stations serve the A train.
+
+----------------------------
+
+```{r 1.8}
+route_data %>% 
+  filter(route_name == "A") %>% 
+  distinct(line, station_name, route_name, ada) %>% 
+  filter(ada == TRUE)
+```
+17 stations which serve the A train are ADA compliant.
+
+----------------------------
+
+##Problem 2
