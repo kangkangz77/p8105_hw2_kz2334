@@ -7,11 +7,20 @@ output: github_document
 
 ##Problem 1
 
-Read NYC Transit data and do data cleaning.
-```{r}
+Load package tidyverse.
+```{r 1.1, results = 'hide'}
 library(tidyverse)
-transit_data = read_csv("./data/NYC_transit.csv") %>% 
-  janitor::clean_names()
-
 ```
+
+Read NYC Transit data and do data cleaning as question required.
+```{r 1.2, results = 'hide'}
+transit_data = read_csv("./data/NYC_transit.csv") %>% 
+  janitor::clean_names() %>%  
+  select(line, station_name, station_latitude, station_longitude,
+         starts_with("route"), entry, vending, entrance_type, ada)
+   mutate(entry = ifelse(entry == "YES", TRUE, FALSE))
+```
+
+
+
 
