@@ -91,3 +91,17 @@ route_data %>%
 ----------------------------
 
 ##Problem 2
+
+Read and clean the Mr. Trash Wheel sheet.
+```{r 2.1}
+library(readxl)
+trash_data = read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx", 
+                        range = "A2:N388") %>% 
+  janitor::clean_names() %>% 
+  filter(is.na(dumpster) == FALSE) %>% 
+  mutate(weight = weight_tons, volume = volume_cubic_yards, 
+          sports_balls = as.integer(round(sports_balls, 0))) %>% 
+  select(- weight_tons, - volume_cubic_yards)
+trash_data
+```
+
