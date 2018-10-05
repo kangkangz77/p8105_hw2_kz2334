@@ -8,19 +8,29 @@ output: github_document
 ##Problem 1
 
 Load package tidyverse.
-```{r 1.1, results = 'hide'}
+```{r 1.1}
 library(tidyverse)
 ```
 
 Read NYC Transit data and do data cleaning as question required.
-```{r 1.2, results = 'hide'}
+```{r 1.2}
 transit_data = read_csv("./data/NYC_transit.csv") %>% 
   janitor::clean_names() %>%  
   select(line, station_name, station_latitude, station_longitude,
-         starts_with("route"), entry, vending, entrance_type, ada)
+         starts_with("route"), entry, vending, entrance_type, ada) %>% 
    mutate(entry = ifelse(entry == "YES", TRUE, FALSE))
 ```
 
+This dataset is about New York subway. It contains variables including line, station name / latitude / longitute, routes served, entry, vending, entrance_type and ADA compliance.
 
+Here is the data cleaning step:
+
+1.   clean up variables'names.
+1.   retain variables the question mentioned.
+1.   convert the entry variable from character to logical.
+
+The dimension of the dataset is (`r dim(transit_data)`).
+
+The data are not tidy. Because some variables, such like the factor that whether a station served for A line, have values appear in different columns. And after variable selection, some observations are repeated.
 
 
