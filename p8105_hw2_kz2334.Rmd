@@ -34,10 +34,18 @@ The dimension of the dataset is (`r dim(transit_data)`).
 The data are not tidy. Because some variables, such like the factor that whether a station served for A line, have values appear in different columns. 
 
 ----------------------------
-Use distinct function to find out how many distinct stations there are.
+
+Use distinct function to find out number of distinct stations.
 ```{r 1.3}
 distinct(transit_data, line, station_name)
 ```
 There are 465 distinct stations.
 
-
+----------------------------
+Use filter and distinct to find out number of stations which are ADA compliant.
+```{r 1.4}
+transit_data %>% 
+  filter(ada == TRUE) %>% 
+  distinct(line, station_name)
+```
+82 stations are ADA compliant.
