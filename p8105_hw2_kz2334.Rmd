@@ -148,3 +148,13 @@ trash_data_2016 = filter(trash_data, year == 2016)
 ```
 
 The median number of sports balls in a dumpster in 2016 was `r  median(trash_data_2016$sports_balls)`.
+
+##Problem 3
+
+Load the BRFSS data from the p8105.datasets package.
+```{r 3.1}
+devtools::install_github("p8105/p8105.datasets")
+library(p8105.datasets)
+data(brfss_smart2010)
+```
+
