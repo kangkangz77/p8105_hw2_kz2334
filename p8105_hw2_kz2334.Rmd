@@ -42,6 +42,7 @@ distinct(transit_data, line, station_name)
 There are 465 distinct stations.
 
 ----------------------------
+
 Use filter and distinct to find out number of stations which are ADA compliant.
 ```{r 1.4}
 transit_data %>% 
@@ -49,3 +50,12 @@ transit_data %>%
   distinct(line, station_name)
 ```
 82 stations are ADA compliant.
+
+----------------------------
+
+Use filter to find out proportion of station entrances / exits without vending allow entrance.
+```{r 1.5}
+entry_data = filter(transit_data, vending == "NO" & entry == TRUE) 
+dim(entry_data)[1] / dim(transit_data)[1]
+```
+There are 3.69% station entrances / exits without vending allow entrance.
