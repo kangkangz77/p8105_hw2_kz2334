@@ -177,3 +177,23 @@ brfss_data = brfss_data %>%
   mutate(excl_or_vrgd = excellent + very_good)
 ```
 
+---------------------------------------
+
+Find out there are how many distinct locations.
+```{r 3.4}
+brfss_data %>% 
+  count(locationdesc)   
+```
+
+There are 404 unique locations are included in the dataset. 
+
+-------------
+
+Find out the most observed state.
+```{r 3.5}
+brfss_data %>% 
+  count(locationabbr) %>% 
+  arrange(desc(n))
+```
+
+Every state is represented. NJ state is observed the most.
