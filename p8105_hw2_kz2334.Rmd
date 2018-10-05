@@ -1,8 +1,17 @@
 ---
-title: "p8105_hw2_kz2334"
+title: "Homework 2"
 author: "Kangkang Zhang"
 date: "10/2/2018"
 output: github_document
 ---
 
+##Problem 1
+
+Read NYC Transit data and do data cleaning.
+```{r}
+library(tidyverse)
+transit_data = read_csv("./data/NYC_transit.csv") %>% 
+  janitor::clean_names()
+
+```
 
