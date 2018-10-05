@@ -158,3 +158,14 @@ library(p8105.datasets)
 data(brfss_smart2010)
 ```
 
+--------------------------------
+
+Clean up variable names and exclude specific variables.
+```{r 3.2}
+brfss_data = brfss_smart2010 %>% 
+  janitor::clean_names() %>% 
+  filter(topic == "Overall Health") %>% 
+  select( - class, - topic, - question, - sample_size, 
+          - confidence_limit_low:- geo_location)
+```
+
