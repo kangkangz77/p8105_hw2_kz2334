@@ -117,3 +117,13 @@ prcp_2017_data = read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-2
   mutate(year = 2017)
 ```
 
+----------------------------------------
+
+Combine datasets and convert month to a character variable.
+```{r 2.3}
+prcp_data = rbind(prcp_2016_data, prcp_2017_data) %>% 
+  janitor::clean_names() %>% 
+  mutate(month = month.name[month])
+prcp_data
+```
+
