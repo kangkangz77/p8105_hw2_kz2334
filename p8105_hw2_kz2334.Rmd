@@ -169,3 +169,11 @@ brfss_data = brfss_smart2010 %>%
           - confidence_limit_low:- geo_location)
 ```
 
+Structure data for values of response. Create a new variable showing the proportion of responses that were “Excellent” or “Very Good”.
+```{r 3.3}
+brfss_data = brfss_data %>% 
+  spread(key = response, value = data_value) %>% 
+  janitor::clean_names() %>%
+  mutate(excl_or_vrgd = excellent + very_good)
+```
+
