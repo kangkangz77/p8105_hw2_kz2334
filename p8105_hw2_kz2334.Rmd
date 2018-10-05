@@ -206,3 +206,18 @@ brfss_2002_data = filter(brfss_data, year == 2002)
 ```
 
 The median of the “Excellent” response value is `r median(brfss_2002_data$excellent, na.rm = TRUE)` in 2002.
+
+---
+
+Make a histogram of “Excellent” response values in the year 2002.
+```{r 3.7, warning = FALSE}
+ggplot(brfss_2002_data, aes(x = excellent)) +
+  geom_histogram(fill = "white", color = "black") + 
+  labs(
+    title = "Histogram of “Excellent” responce in 2002",
+    x = "Value of “Excellent” response",
+    y = "Freqency"
+  ) +
+  theme_bw()
+```
+
